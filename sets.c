@@ -6,8 +6,7 @@
 void main(){
     Set A = NULL;
     Set B = NULL;
-    Set unionC = NULL;
-    Set intersectC = NULL;
+    Set C = NULL;
 
 
     int setA[] = {2, 1, 3};
@@ -16,15 +15,17 @@ void main(){
     populate(&A, setA, sizeof(setA)/sizeof(int));
     populate(&B, setB, sizeof(setB)/sizeof(int));
 
+    C = intersectionSet(A, B);
+
+    display(A, B, C);
+
     //sort(&A);
     //sort(&B);
-    //unionC = unionSorted(A, B);
+    //C = unionSorted(A, B);
+    
+    printf("\n\n");
 
-    //unionC = unionSet(A, B);
+    C = unionSet(A, B);
 
-    //display(A, B, unionC); 
-
-    intersectC = intersectionSet(A, B);
-
-    display(A, B, intersectC);
+    display(A, B, C);
 }
