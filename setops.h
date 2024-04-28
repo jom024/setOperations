@@ -69,6 +69,39 @@ Set unionSorted(Set A, Set B){
     return C;
 }
 
+Set unionSet(Set A, Set B){
+    Set C = NULL;
+    Set *trav;
+
+    while(A!=NULL){
+        insertLast(&C, A->elem);
+        A = A->link;
+    }
+
+    while(B!=NULL){
+        for(trav = &C; *trav != NULL && B->elem != (*trav)->elem; trav = &(*trav)->link);      //checks if element exists in C
+        if(*trav == NULL){ 
+            insertLast(&C, B->elem);    //only inserts element if it does not exist in C just yet
+        }
+        B = B->link;
+    }
+
+    return C;
+}
+
+Set intersectionSet(Set A, Set B){
+    Set *trav, C = NULL;
+    while(A!=NULL){
+        for(trav = &B; *trav!=NULL && A->elem != (*trav)->elem; trav = &(*trav)->link);   //checks if A element exists in B element
+        if(*trav!=NULL){
+            insertLast(&C, A->elem);
+        }
+        A = A->link;
+    }
+
+    return C;
+}
+
 void populate(Set* S, int* elements, int size){
     int i = 0;
     while(i < size){
